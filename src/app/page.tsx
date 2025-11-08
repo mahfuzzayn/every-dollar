@@ -1,35 +1,18 @@
-"use client";
+import Home from "@/components/modules/home";
+import { Metadata } from "next";
 
-import { useAuth } from "@/contexts/AuthContext";
-import ManageExpenses from "@/components/modules/expense/ManageExpenses";
-import AuthForm from "@/components/auth/AuthForm";
-import Navbar from "@/components/layout/Navbar";
+export const metadata: Metadata = {
+  title: "Home - EveryDollar",
+  description: "Manage your expenses and track your spending",
+}
+
 
 const HomePage = () => {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-muted-foreground">Loading...</div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return <AuthForm />;
-  }
-
   return (
-    <div className="min-h-screen bg-background container mx-auto">
-      <Navbar />
-      <main className="container py-8">
-        <div className="mt-8">
-          <ManageExpenses />
-        </div>
-      </main>
-    </div>
-  );
-};
+    <>
+      <Home />
+    </>
+  )
+}
 
 export default HomePage;

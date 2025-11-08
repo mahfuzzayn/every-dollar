@@ -83,11 +83,11 @@ export default function AuthForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 py-12">
       <div className="w-full max-w-md space-y-8">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Expense Manager</h1>
-          <p className="text-muted-foreground mt-2">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-black tracking-tight">Expense Manager</h1>
+          <p className="text-muted-foreground mt-2 text-base font-medium">
             Sign in or create an account to manage your expenses
           </p>
         </div>

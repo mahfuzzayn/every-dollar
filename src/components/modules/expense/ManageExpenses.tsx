@@ -101,15 +101,15 @@ const ManageExpenses = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      Food: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-      Transport: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-      Shopping: "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200",
-      Bills: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200",
-      Entertainment: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-      Healthcare: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-      Education: "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-      Travel: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200",
-      Other: "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200",
+      Food: "bg-orange-400 text-black border-black",
+      Transport: "bg-blue-400 text-black border-black",
+      Shopping: "bg-pink-400 text-black border-black",
+      Bills: "bg-red-400 text-black border-black",
+      Entertainment: "bg-purple-400 text-black border-black",
+      Healthcare: "bg-green-400 text-black border-black",
+      Education: "bg-indigo-400 text-black border-black",
+      Travel: "bg-yellow-400 text-black border-black",
+      Other: "bg-gray-300 text-black border-black",
     };
     return colors[category] || colors.Other;
   };
@@ -120,27 +120,27 @@ const ManageExpenses = () => {
   );
 
   return (
-    <div className="w-full space-y-6">
+    <div className="w-full space-y-8">
       {/* Add Expense Section */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Add New Expense</CardTitle>
+      <Card className="bg-white">
+        <CardHeader className="px-8 pt-8">
+          <CardTitle className="text-2xl font-black">Add New Expense</CardTitle>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-8 pb-8">
           <AddExpense />
         </CardContent>
       </Card>
 
       {/* Expenses List Section */}
-      <Card>
-        <CardHeader>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <Card className="bg-white">
+        <CardHeader className="px-8 pt-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <CardTitle>Your Expenses</CardTitle>
-              <p className="text-sm text-muted-foreground mt-1">
+              <CardTitle className="text-2xl font-black">Your Expenses</CardTitle>
+              <p className="text-base text-muted-foreground mt-2 font-medium">
                 {filteredExpenses.length} expense
                 {filteredExpenses.length !== 1 ? "s" : ""} • Total:{" "}
-                {formatCurrency(totalAmount)}
+                <span className="font-black text-black">{formatCurrency(totalAmount)}</span>
               </p>
             </div>
 
@@ -205,19 +205,19 @@ const ManageExpenses = () => {
             </div>
           </div>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-8 pb-8">
           {isLoading ? (
-            <div className="flex items-center justify-center py-12">
-              <div className="text-muted-foreground">Loading expenses...</div>
+            <div className="flex items-center justify-center py-16">
+              <div className="text-muted-foreground font-bold text-lg">Loading expenses...</div>
             </div>
           ) : filteredExpenses.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="text-muted-foreground mb-2">
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <div className="text-muted-foreground mb-3 font-bold text-lg">
                 {selectedCategory || selectedMonth
                   ? "No expenses match your filters"
                   : "No expenses yet"}
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-base text-muted-foreground font-medium">
                 {selectedCategory || selectedMonth
                   ? "Try adjusting your filters or add a new expense"
                   : "Add your first expense to get started"}
@@ -284,11 +284,11 @@ const ManageExpenses = () => {
               {/* Mobile Card View */}
               <div className="md:hidden space-y-4">
                 {filteredExpenses.map((expense) => (
-                  <Card key={expense._id}>
-                    <CardContent className="pt-6">
-                      <div className="flex items-start justify-between mb-4">
+                  <Card key={expense._id} className="bg-white">
+                    <CardContent className="pt-6 px-6 pb-6">
+                      <div className="flex items-start justify-between mb-6">
                         <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-1">
+                          <h3 className="font-black text-xl mb-2">
                             {expense.title}
                           </h3>
                           <Badge
@@ -299,15 +299,15 @@ const ManageExpenses = () => {
                           </Badge>
                         </div>
                         <div className="text-right">
-                          <div className="font-bold text-lg">
+                          <div className="font-black text-xl">
                             {formatCurrency(expense.amount)}
                           </div>
-                          <div className="text-sm text-muted-foreground">
+                          <div className="text-sm text-muted-foreground font-medium">
                             {format(new Date(expense.date), "MMM dd, yyyy")}
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-2 pt-4 border-t">
+                      <div className="flex gap-3 pt-4 border-t-4 border-black">
                         <Button
                           variant="outline"
                           size="sm"
@@ -318,9 +318,9 @@ const ManageExpenses = () => {
                           Edit
                         </Button>
                         <Button
-                          variant="outline"
+                          variant="destructive"
                           size="sm"
-                          className="flex-1 text-destructive"
+                          className="flex-1"
                           onClick={() => handleDeleteClick(expense)}
                         >
                           <Trash2 className="mr-2 h-4 w-4" />
