@@ -201,7 +201,7 @@ const AddExpense = () => {
             )}
           />
 
-          <Button type="submit" className="w-full" disabled={isLoading}>
+          <Button type="submit" className="cursor-pointer w-full bg-primary/50 hover:bg-primary/70 text-black/70" disabled={isLoading}>
             {isLoading ? "Adding expense..." : "Add Expense"}
           </Button>
         </form>

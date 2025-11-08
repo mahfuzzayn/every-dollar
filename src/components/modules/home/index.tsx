@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      <main className="container py-12 px-6">
+      <main className="container py-12 mx-auto px-6">
         <ManageExpenses />
       </main>
     </div>

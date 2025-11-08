@@ -13,9 +13,12 @@ function Avatar({
     <AvatarPrimitive.Root
       data-slot="avatar"
       className={cn(
-        "relative flex size-8 shrink-0 overflow-hidden border-2 border-black",
+        "relative flex size-8 shrink-0 overflow-hidden border-2",
         className
       )}
+      style={{
+        borderColor: 'var(--neo-border)',
+      }}
       {...props}
     />
   )

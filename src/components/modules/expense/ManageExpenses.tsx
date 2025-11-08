@@ -101,15 +101,15 @@ const ManageExpenses = () => {
 
   const getCategoryColor = (category: string) => {
     const colors: Record<string, string> = {
-      Food: "bg-orange-400 text-black border-black",
-      Transport: "bg-blue-400 text-black border-black",
-      Shopping: "bg-pink-400 text-black border-black",
-      Bills: "bg-red-400 text-black border-black",
-      Entertainment: "bg-purple-400 text-black border-black",
-      Healthcare: "bg-green-400 text-black border-black",
-      Education: "bg-indigo-400 text-black border-black",
-      Travel: "bg-yellow-400 text-black border-black",
-      Other: "bg-gray-300 text-black border-black",
+      Food: "bg-orange-400 text-black",
+      Transport: "bg-blue-400 text-black",
+      Shopping: "bg-pink-400 text-black",
+      Bills: "bg-red-400 text-black",
+      Entertainment: "bg-purple-400 text-black",
+      Healthcare: "bg-green-400 text-black",
+      Education: "bg-indigo-400 text-black",
+      Travel: "bg-yellow-400 text-black",
+      Other: "bg-gray-300 text-black",
     };
     return colors[category] || colors.Other;
   };
@@ -307,7 +307,10 @@ const ManageExpenses = () => {
                           </div>
                         </div>
                       </div>
-                      <div className="flex gap-3 pt-4 border-t-4 border-black">
+                      <div 
+                        className="flex gap-3 pt-4 border-t-4"
+                        style={{ borderColor: 'var(--neo-border)' }}
+                      >
                         <Button
                           variant="outline"
                           size="sm"

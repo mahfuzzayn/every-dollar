@@ -52,27 +52,35 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
-function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
+function TableRow({ className, style, ...props }: React.ComponentProps<"tr">) {
   return (
     <tr
       data-slot="table-row"
       className={cn(
-        "hover:bg-accent/50 data-[state=selected]:bg-accent border-b-2 border-black transition-colors",
+        "hover:bg-accent/50 data-[state=selected]:bg-accent border-b-2 transition-colors",
         className
       )}
+      style={{
+        ...style,
+        borderColor: 'var(--neo-border)',
+      }}
       {...props}
     />
   )
 }
 
-function TableHead({ className, ...props }: React.ComponentProps<"th">) {
+function TableHead({ className, style, ...props }: React.ComponentProps<"th">) {
   return (
     <th
       data-slot="table-head"
       className={cn(
-        "text-foreground h-12 px-4 text-left align-middle font-bold whitespace-nowrap bg-muted border-b-4 border-black [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
+        "text-foreground h-12 px-4 text-left align-middle font-bold whitespace-nowrap bg-muted border-b-4 [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]",
         className
       )}
+      style={{
+        ...style,
+        borderColor: 'var(--neo-border)',
+      }}
       {...props}
     />
   )

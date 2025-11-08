@@ -39,11 +39,17 @@ export default function Navbar() {
   const isActive = (href: string) => pathname === href;
 
   return (
-    <header className="border-b-4 border-black bg-white sticky top-0 z-50 shadow-[0_4px_0px_0px_rgba(0,0,0,1)]">
+    <header 
+      className="flex justify-center border-b-4 bg-white sticky top-0 z-50"
+      style={{
+        borderColor: 'var(--neo-border)',
+        boxShadow: '0 4px 0px 0px var(--shadow-color)',
+      }}
+    >
       <div className="container flex h-20 items-center justify-between px-6">
         <div className="flex items-center gap-6">
           <Link href="/">
-            <h1 className="text-2xl font-black tracking-tight">Every<span className="text-black">Dollar</span></h1>
+            <h1 className="text-2xl font-black tracking-tight">Every<span className="text-primary">Dollar</span></h1>
           </Link>
         </div>
 
@@ -70,11 +76,27 @@ export default function Navbar() {
                 key={link.href} 
                 href={link.href} 
                 className={cn(
-                  "px-4 py-2 text-sm font-bold border-4 border-black transition-all",
+                  "px-4 py-2 text-sm font-bold border-4 transition-all",
                   isActive(link.href)
-                    ? "bg-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                    : "bg-white text-black hover:bg-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                    ? "bg-primary/50 text-black/80"
+                    : "bg-white text-black hover:bg-accent hover:translate-x-[-2px] hover:translate-y-[-2px]"
                 )}
+                style={{
+                  borderColor: 'var(--neo-border)',
+                  boxShadow: isActive(link.href) 
+                    ? '4px 4px 0px 0px var(--shadow-color)'
+                    : '4px 4px 0px 0px var(--shadow-color)',
+                }}
+                onMouseEnter={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.boxShadow = '6px 6px 0px 0px var(--shadow-color)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isActive(link.href)) {
+                    e.currentTarget.style.boxShadow = '4px 4px 0px 0px var(--shadow-color)';
+                  }
+                }}
               >
                 {link.label}
               </Link>
@@ -84,7 +106,11 @@ export default function Navbar() {
           {/* User Menu */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className="relative h-12 w-12 cursor-pointer border-2 border-black">
+              <Button 
+                variant="ghost" 
+                className="relative h-12 w-12 cursor-pointer border-2"
+                style={{ borderColor: 'var(--neo-border)' }}
+              >
                 <Avatar className="h-12 w-12">
                   <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
@@ -111,7 +137,10 @@ export default function Navbar() {
 
       {/* Mobile Navigation Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t-4 border-black bg-white">
+        <div 
+          className="md:hidden border-t-4 bg-white"
+          style={{ borderColor: 'var(--neo-border)' }}
+        >
           <nav className="container px-6 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -119,11 +148,15 @@ export default function Navbar() {
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
-                  "block px-4 py-3 text-sm font-bold border-4 border-black transition-all",
+                  "block px-4 py-3 text-sm font-bold border-4 transition-all",
                   isActive(link.href)
-                    ? "bg-black text-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
-                    : "bg-white text-black hover:bg-accent shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                    ? "bg-black text-white"
+                    : "bg-white text-black hover:bg-accent"
                 )}
+                style={{
+                  borderColor: 'var(--neo-border)',
+                  boxShadow: '4px 4px 0px 0px var(--shadow-color)',
+                }}
               >
                 {link.label}
               </Link>
