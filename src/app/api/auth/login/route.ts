@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/monogdb';
-import User from '@/models/User';
+import User, { IUser } from '@/models/User';
 import { generateToken } from '@/lib/jwt';
 
 export async function POST(request: Request) {
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     // Find user and include password for comparison
     const user = await User.findOne({ email: email.toLowerCase() }).select(
       '+password'
-    );
+    ) as IUser | null;
 
     if (!user) {
       return NextResponse.json(

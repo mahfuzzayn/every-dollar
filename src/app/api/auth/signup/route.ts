@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectDB from '@/lib/monogdb';
-import User from '@/models/User';
+import User, { IUser } from '@/models/User';
 import { generateToken } from '@/lib/jwt';
 
 export async function POST(request: Request) {
@@ -54,11 +54,11 @@ export async function POST(request: Request) {
     }
 
     // Create new user
-    const user = await User.create({
+    const user = (await User.create({
       name: name.trim(),
       email: email.toLowerCase().trim(),
       password,
-    });
+    })) as IUser;
 
     // Generate token
     const token = generateToken({

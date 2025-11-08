@@ -6,7 +6,7 @@ import { verifyAuth } from '@/lib/auth';
 // GET route - Fetch a single expense
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     await connectDB();
@@ -15,7 +15,7 @@ export async function GET(
     const user = verifyAuth(request);
 
     const expense = await Expense.findOne({
-      _id: params.id,
+      _id: (await params).id,
       userId: user.userId,
     });
 
