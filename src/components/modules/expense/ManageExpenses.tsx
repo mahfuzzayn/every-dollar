@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import { Edit2, Trash2, Filter, X } from "lucide-react";
 import AddExpense from "./AddExpense";
 import EditExpenseDialog from "./EditExpenseDialog";
+import BudgetTracker from "../budget/BudgetTracker";
 import { useExpense } from "@/contexts/ExpenseContext";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";

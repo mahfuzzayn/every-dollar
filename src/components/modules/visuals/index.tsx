@@ -30,6 +30,7 @@ import {
     ChartTooltip,
 } from "@/components/ui/chart";
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import BudgetTracker from "../budget/BudgetTracker";
 
 const categories = [
     "Food",
@@ -171,6 +172,9 @@ const Visuals = () => {
                         Analyze your spending patterns and track your expenses
                     </p>
                 </div>
+
+                {/* Budget Tracker Section */}
+                <BudgetTracker />
 
                 {/* Filters */}
                 <Card className="bg-white">

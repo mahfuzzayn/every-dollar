@@ -27,3 +27,12 @@ export type ExpenseCategory =
   | "Travel"
   | "Other";
 
+export interface Budget {
+  _id: string;
+  userId: string;
+  amount: number;
+  month: string; // Format: "YYYY-MM"
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
+}
+
